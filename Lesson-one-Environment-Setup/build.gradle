@@ -1,0 +1,32 @@
+buildscript {
+	repositories {
+		maven{url "http://10.10.5.62:8081/nexus/content/groups/public/"}
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '1.5.1.RELEASE'
+}
+
+apply plugin: 'java'
+
+// 配置springBoot插件
+springBoot {
+    // 指定SpringBoot启动类
+	mainClass = 'com.comtop.DartApplication'
+}
+
+repositories {
+//    jcenter()
+	mavenLocal()
+	maven{url "http://10.10.5.62:8081/nexus/content/groups/public/"}
+}
+
+dependencies {
+	// 引入dart-framework
+	compile 'com.comtop:comtop-dart-framework:1.0.0-SNAPSHOT'
+	compile 'com.comtop:comtop-dart-framework-web:1.0.0-SNAPSHOT'
+	
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    testCompile "junit:junit:4.11"
+}
