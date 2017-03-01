@@ -1,6 +1,6 @@
 buildscript {
 	repositories {
-		maven{url "http://10.10.5.62:8081/nexus/content/groups/public/"}
+		maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
 	}
 }
 
