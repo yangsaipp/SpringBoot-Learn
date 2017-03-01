@@ -1,0 +1,10 @@
+ 
+zuul:
+  # ignored-services: '*' 表示所有的都不走zuul代理
+  routes:
+   # 第一种写法demo4-microservice-provider-user-register: /gateway/userService/**
+   # /*只能匹配一层路径，如果是/**则无论多少级路径都可以匹配
+   server1:
+    path: /gateway/userService/**
+    #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
+    serviceId: demo4-microservice-provider-user-register
