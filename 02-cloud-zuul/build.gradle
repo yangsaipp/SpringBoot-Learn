@@ -9,6 +9,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'project-report'
 
 // 配置springBoot插件
 springBoot {
