@@ -41,7 +41,7 @@ public class MyRouteLocator extends SimpleRouteLocator implements RefreshableRou
 		log.info(" ********************* use my route locator.");
 		Map<String, ZuulRoute> zunMap = super.locateRoutes();
 		for(Map.Entry<String, ZuulRoute> entry : zunMap.entrySet()) {
-			if(entry.getKey() == "searcher") {
+			if(entry.getKey().equals("/baidu/**")) {
 				entry.getValue().setUrl("https://www.sogou.com/");
 			}
 		}
