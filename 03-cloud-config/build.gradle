@@ -27,7 +27,11 @@ dependencyManagement {
 }
 
 dependencies {
-//    compile('org.springframework.cloud:spring-cloud-starter-config')
+	// import config client
+//  compile('org.springframework.cloud:spring-cloud-starter-config')
+	// import config server
     compile('org.springframework.cloud:spring-cloud-config-server')
-    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+//    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	
 }

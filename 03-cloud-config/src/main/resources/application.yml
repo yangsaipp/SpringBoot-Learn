@@ -9,13 +9,14 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-cloud-samples/config-repo
-          //uri: file://e:/Workspaces/gitTest
-          repos:
-            - patterns: multi-repo-demo-*
-              uri: https://github.com/spring-cloud-samples/config-repo
-
+          # 设置GIT URI，可是本地目录 file://e:/Workspaces/gitTest
+          uri: file://d:/Program Data/my-config-repo/
+          #repos:
+            #- patterns: multi-repo-demo-*
+            #uri: https://git.coding.net/yangsaipp/my-config-repo.git
 server:
   port: 8888
 management:
   context_path: /admin
+  security:
+    enabled: false
