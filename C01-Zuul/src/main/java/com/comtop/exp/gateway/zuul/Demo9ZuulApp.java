@@ -29,14 +29,14 @@ public class Demo9ZuulApp {
 	public static void main(String[] args) {
 		SpringApplication.run(Demo9ZuulApp.class, args);
 		// 定时5秒后触发SpringContext的RoutesRefreshedEvent
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			public void run() {
-				log.info(" ************* Publish routes refreshed event. ");
-				SpringContextUtil.getApplicationContext().publishEvent(
-						new RoutesRefreshedEvent((RouteLocator) SpringContextUtil.getBean("routeLocator")));
-			}
-		}, 5000);
+//		Timer timer = new Timer();
+//		timer.schedule(new TimerTask() {
+//			public void run() {
+//				log.info(" ************* Publish routes refreshed event. ");
+//				SpringContextUtil.getApplicationContext().publishEvent(
+//						new RoutesRefreshedEvent((RouteLocator) SpringContextUtil.getBean("routeLocator")));
+//			}
+//		}, 5000);
 	}
 
 	@Autowired
@@ -46,7 +46,7 @@ public class Demo9ZuulApp {
 	protected ServerProperties server;
 
 	@Bean
-	// MyRouteLocator替换自动配置使用的SimpleRouteLocator
+//	 MyRouteLocator替换自动配置使用的SimpleRouteLocator
 	public RouteLocator routeLocator() {
 		return new MyRouteLocator(this.server.getServletPrefix(), this.zuulProperties);
 	}

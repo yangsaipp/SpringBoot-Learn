@@ -40,11 +40,11 @@ public class MyRouteLocator extends SimpleRouteLocator implements RefreshableRou
 	protected Map<String, ZuulRoute> locateRoutes() {
 		log.info(" ********************* use my route locator.");
 		Map<String, ZuulRoute> zunMap = super.locateRoutes();
-		for(Map.Entry<String, ZuulRoute> entry : zunMap.entrySet()) {
-			if(entry.getKey().equals("/baidu/**")) {
-				entry.getValue().setUrl("https://www.sogou.com/");
-			}
-		}
+//		for(Map.Entry<String, ZuulRoute> entry : zunMap.entrySet()) {
+//			if(entry.getKey().equals("/baidu/**")) {
+//				entry.getValue().setUrl("https://www.sogou.com/");
+//			}
+//		}
 		return zunMap;
 	}
 	
@@ -55,12 +55,12 @@ public class MyRouteLocator extends SimpleRouteLocator implements RefreshableRou
 	@Override
 	public void refresh() {
 		log.info(" ********************* use my route refresh.");
-		Map<String, ZuulRoute> zunMap = super.locateRoutes();
-		for(Map.Entry<String, ZuulRoute> entry : zunMap.entrySet()) {
-			if(entry.getKey().equals("/baidu/**")) {
-				entry.getValue().setUrl("https://www.sogou.com/");
-			}
-		}
+//		Map<String, ZuulRoute> zunMap = super.locateRoutes();
+//		for(Map.Entry<String, ZuulRoute> entry : zunMap.entrySet()) {
+//			if(entry.getKey().equals("/baidu/**")) {
+//				entry.getValue().setUrl("https://www.sogou.com/");
+//			}
+//		}
 	}
 
 }

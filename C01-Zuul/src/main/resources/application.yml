@@ -5,13 +5,29 @@ spring:
   application:
     name: zuul
     
-
+management:
+  security:
+    enabled: false
+  context_path: /admin
 zuul:
-  # ignored-services: '*' 表示所有的都不走zuul代理
+  # 表示除了明确配置过的路径以外，其他所有的都不走zuul代理
+  ignored-services: '*' 
   routes:
-   # 第一种写法demo4-microservice-provider-user-register: /gateway/userService/**
-   # /*只能匹配一层路径，如果是/**则无论多少级路径都可以匹配
-   searcher:
-    path: /baidu/**
-    #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
-    url: https://www.baidu.com/
+  # 第一种写法demo4-microservice-provider-user-register: /gateway/userService/**
+  # /*只能匹配一层路径，如果是/**则无论多少级路径都可以匹配
+    baidu:
+      path: /baidu/**
+      #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
+      url: https://www.baidu.com/
+    sogou:
+      path: /sogou/**
+      #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
+      url: https://www.sogou.com/
+    sina:
+      path: /sina/**
+      #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
+      url: http://www.sina.com.cn/
+    wy:
+      path: /wy/**
+      #后端的配置既可以是"serviceId"(对于服务发现中的服务而言), 也可以是"url"(对于物理地址)
+      url: http://www.163.com/
