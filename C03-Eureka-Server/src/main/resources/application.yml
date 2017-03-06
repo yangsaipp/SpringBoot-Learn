@@ -14,7 +14,7 @@ server:
 #配置Eureka服务信息
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false
     service-url:
       defaultZone: http://SuperAdmin:123@localhost:8761/eureka

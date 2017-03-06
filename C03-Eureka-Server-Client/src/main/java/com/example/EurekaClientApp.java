@@ -1,11 +1,15 @@
 package com.example;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +20,7 @@ import com.netflix.discovery.EurekaClient;
 @RestController
 @SpringBootApplication
 @EnableEurekaClient
+@EnableFeignClients
 public class EurekaClientApp {
 	
 	@RequestMapping("/")
@@ -25,17 +30,34 @@ public class EurekaClientApp {
     }
 	
 	@Autowired
-	private EurekaClient discoveryClient;
+	private EurekaClient eurekaClient;
 	
 	@RequestMapping("/serverUrl")
     @ResponseBody
 	public String serviceUrl() {
-		List<InstanceInfo> list = discoveryClient.getInstancesById("EUREKACLIENT");
+		InstanceInfo serverinstance = eurekaClient.getNextServerFromEureka("eurekaserver", false);
+		InstanceInfo clientInstance = eurekaClient.getNextServerFromEureka("eurekaClient", false);
+		StringBuilder sb = new StringBuilder();
+		StringUtil.fieldToString(sb, serverinstance);
+		sb.append("<br/>");
+		StringUtil.fieldToString(sb, clientInstance);
+		
+	    return  sb.toString();
+	}
+	
+	@Autowired
+	private DiscoveryClient discoveryClient;
+
+	@RequestMapping("/serverUrl2")
+    @ResponseBody
+	public String serviceUrl2() {
+	    List<ServiceInstance> list = discoveryClient.getInstances("eurekaserver");
 	    if (list != null && list.size() > 0 ) {
-	        return list.get(0).getHomePageUrl();
+	        return StringUtil.getToString(list.get(0)).toString();
 	    }
 	    return null;
 	}
+	
 	
 	/**
 	 * @param id
