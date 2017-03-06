@@ -1,8 +1,5 @@
 package com.comtop.exp.gateway.zuul;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +11,15 @@ import org.springframework.cloud.netflix.zuul.RoutesRefreshedEvent;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Hello world!
  *
  */
+@RestController
 @SpringBootApplication
 @EnableZuulProxy
 // @EnableAutoConfiguration(exclude={SimpleRouteLocator.class})
@@ -38,6 +39,14 @@ public class Demo9ZuulApp {
 //			}
 //		}, 5000);
 	}
+	
+	@RequestMapping("/refresh")
+    @ResponseBody
+    String home() {
+		SpringContextUtil.getApplicationContext().publishEvent(
+				new RoutesRefreshedEvent(routeLocator()));
+    	return "refresh success.";
+    }
 
 	@Autowired
 	protected ZuulProperties zuulProperties;
