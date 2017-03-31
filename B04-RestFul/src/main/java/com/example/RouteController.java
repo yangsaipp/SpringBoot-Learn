@@ -86,8 +86,8 @@ public class RouteController {
 	 * @param perPage 每页数据量，默认每页100条数据 
 	 * @return 所有路由服务规则
 	 */
-	@RequestMapping(value = "/console/routes", method = RequestMethod.GET)
-	public Object routes(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "perPage", defaultValue = "100") int perPage){
+	@RequestMapping(value = "/routes", method = RequestMethod.GET)
+	public Object pageList(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "perPage", defaultValue = "100") int perPage){
 		System.out.println("page:"+ page);
 		System.out.println("perPage:"+ perPage);
 		Map<String,Object> routes = new HashMap<String,Object>();
@@ -103,7 +103,7 @@ public class RouteController {
 	 * @param id id
 	 * @return RouteConfigVO
 	 */
-	@RequestMapping(value = "/console/routes/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/routes/{id}", method = RequestMethod.GET)
 	public Object get(@PathVariable String id){
 		return map.get(id);
 	}
@@ -113,7 +113,7 @@ public class RouteController {
 	 * @param routeConfigVO routeConfigVO
 	 * @return routeConfigVO
 	 */
-	@RequestMapping(value = "/console/routes", method = RequestMethod.POST)
+	@RequestMapping(value = "/routes", method = RequestMethod.POST)
 	public Object add(@RequestBody RouteConfigVO routeConfigVO){
 		routeConfigVO.setId(String.valueOf((new Random().nextInt())));
 		log.info("add routeConfigVO : {}", routeConfigVO.getServiceName());
@@ -127,7 +127,7 @@ public class RouteController {
 	 * @param routeConfigVO routeConfigVO
 	 * @return routeConfigVO
 	 */
-	@RequestMapping(value = "/console/routes/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/routes/{id}", method = RequestMethod.PUT)
 	public Object update(@PathVariable String id, @RequestBody RouteConfigVO routeConfigVO){
 		map.put(routeConfigVO.getId(), routeConfigVO);
 		log.info("update routeConfigVO : {}",routeConfigVO.getServiceName());
@@ -140,7 +140,7 @@ public class RouteController {
 	 * @param id id
 	 * @return RouteConfigVO
 	 */
-	@RequestMapping(value = "/console/routes/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/routes/{id}", method = RequestMethod.DELETE)
 	public Object delete(@PathVariable String id){
 		RouteConfigVO vo = new RouteConfigVO();
 		log.info("delete routeConfigVO id : {}",id);
