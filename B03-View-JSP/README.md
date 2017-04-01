@@ -2,8 +2,6 @@
 
 ## 疑问收集
 
-记录学习过程中的疑问，方便后面归纳整理。
-
 1. 如何配置使用JSP？
 
 步骤一：修改Gradle文件
@@ -69,10 +67,10 @@ public class HelloController {
 }
 ```
 
-启动后输入http://localhost:8080/helloJsp1,访问即可。
+启动后输入 http://localhost:8080/helloJsp1 ，访问即可。更多详情见源码。
 
 ## 注意
 1. JSP存放src/main/resources/static或者src/main/resources/template目录下都无法访问。
-2. 需要引入war插件打成war包才能访问JSP，若使用jar包则生成的jar包会丢失src/main/webapp目录下的资源。
+2. 打包需要打成war包才能正常访问JSP，若使用jar包则生成的jar包会丢失src/main/webapp目录下的资源。
 
 基于以上第二点，推荐使用其他后端模板而不是使用JSP。
