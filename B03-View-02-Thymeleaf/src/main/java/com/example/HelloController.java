@@ -19,4 +19,12 @@ public class HelloController {
 		map.put("name", name);
 		return "hello";
 	}
+	
+	@RequestMapping("/test/list")
+	public String testList(Map<String, Object> map) {
+		map.put("hello", "from HelloController.helloHtml");
+		System.out.println(name);
+		map.put("name", name);
+		return "/test/listNew";
+	}
 }
