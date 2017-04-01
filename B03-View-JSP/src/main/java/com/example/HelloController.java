@@ -40,18 +40,4 @@ public class HelloController {
 		return "helloJsp";
 	}
 	
-	/**
-	 * @param map map
-	 * @return String
-	 */
-	@RequestMapping("/helloJsp2")
-	public Object helloJsp2(Map<String, Object> map) {
-
-		System.out.println("HelloController.helloJsp().hello=" + hello);
-
-		map.put("hello", hello);
-		ModelAndView mv = new ModelAndView("helloJsp.jsp", map);
-		return mv;
-	}
-
 }

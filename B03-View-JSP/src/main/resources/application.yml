@@ -3,5 +3,5 @@ spring:
     name: jsp
   mvc:
     view:
-     prefix: /gateway/
-     suffix: .jsp
+     prefix: /WEB-INF/
+     suffix: .JSP
