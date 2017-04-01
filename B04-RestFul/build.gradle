@@ -31,9 +31,5 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-//	引入jsp解析类
-	providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
-	providedRuntime('javax.servlet:javax.servlet-api')
-	providedRuntime('javax.servlet:jstl')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

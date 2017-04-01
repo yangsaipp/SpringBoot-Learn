@@ -2,17 +2,38 @@
 
 ## 疑问收集
 
-### 1. 服务端与客户端怎么配置后能互相访问?
+### Eureka
 
-#### 1.1 使用原生的Netflix的EurekaClient
+1. 如何获取所有的注册服务ServiceId以及其相关信息，比如Host、URL?
 
-#### 1.2 原生的Spring Cloud的DiscoveryClient
+两种方式：
+- 使用原生的Netflix的EurekaClient
+- 原生的Spring Cloud的DiscoveryClient
 
-### 2. ServerId的作用?
+2. ServerId的作用?
 
-### 3. Zuul如何与Eureka集成？
+3. Eureka的自我保护开启后，如何移除不用的服务？
 
-### 4. Eureka是否支持负载均衡？有哪些策略？
+http://stackoverflow.com/questions/39127889/eureka-detect-service-status
+
+关闭自我保护，启动后过3分钟后会自动移除无心跳的服务，若想更快的移除可指定心跳检测的时间间隔
+```
+eureka:
+  server:
+    enable-self-preservation: false
+  leaseInfo:
+    renewalIntervalInSecs: 10
+    durationInSecs: 20
+    
+```
+
+4. Eureka是否支持负载均衡？有哪些策略？
+
+
+### Eureka与其他组件集成
+
+1. Zuul如何与Eureka集成？
+
 
 ## 重点摘要
 
