@@ -7,7 +7,7 @@
     <title>GOD</title>
 </head>
 <body>
-helloJsp
+helloJsp-getaway
 <hr>
 ${hello}
 </body>
