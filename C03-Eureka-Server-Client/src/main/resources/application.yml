@@ -17,4 +17,4 @@ eureka:
     #register-with-eureka: false
     #fetch-registry: false
     service-url:
-      defaultZone: http://SuperAdmin:123@localhost:8761/eureka
+      defaultZone: http://SuperAdmin:123@10.10.5.61:8761/eureka

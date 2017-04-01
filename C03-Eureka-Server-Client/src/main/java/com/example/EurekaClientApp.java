@@ -32,7 +32,11 @@ public class EurekaClientApp {
 	@Autowired
 	private EurekaClient eurekaClient;
 	
-	@RequestMapping("/serverUrl")
+	/**
+	 * 根据serverId获取对应的service实例 
+	 * @return
+	 */
+	@RequestMapping("/server1")
     @ResponseBody
 	public String serviceUrl() {
 		InstanceInfo serverinstance = eurekaClient.getNextServerFromEureka("eurekaserver", false);
@@ -48,25 +52,30 @@ public class EurekaClientApp {
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
-	@RequestMapping("/serverUrl2")
+	/**
+	 * 根据serverId获取对应的service实例 
+	 * @return
+	 */
+	@RequestMapping("/server")
     @ResponseBody
-	public String serviceUrl2() {
-	    List<ServiceInstance> list = discoveryClient.getInstances("eurekaserver");
-	    if (list != null && list.size() > 0 ) {
-	        return StringUtil.getToString(list.get(0)).toString();
-	    }
-	    return null;
+	public Object serviceInfo() {
+		List<String> servicesIds = discoveryClient.getServices();
+	    List<ServiceInstance> list = discoveryClient.getInstances(servicesIds.get(0));
+//	    if (list != null && list.size() > 0 ) {
+//	        return StringUtil.getToString(list.get(0)).toString();
+//	    }
+	    return list;
 	}
 	
-	
-	/**
-	 * @param id
-	 * @return 1
-	 */
-//	@GetMapping("/user/{id}")
-//	public User findById(@PathVariable Long id){
-//		return userRepository.findOne(id);
-//	}
+	@RequestMapping("/serverIds")
+    @ResponseBody
+	public Object servicesIds() {
+	    List<String> servicesIds = discoveryClient.getServices();
+//	    if (list != null && list.size() > 0 ) {
+//	        return StringUtil.getToString(list.get(0)).toString();
+//	    }
+	    return servicesIds;
+	}
 	
 	public static void main(String[] args) {
 		 new SpringApplicationBuilder(EurekaClientApp.class).web(true).run(args);
