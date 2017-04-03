@@ -28,7 +28,7 @@ public class TemplateVisitHandlerAdapter implements HandlerAdapter {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		log.info("************** MyHandlerAdapter ");
+		log.debug("TemplateVisitHandlerAdapter handle request.");
 		return ((TemplateVisitHandler) handler).handleRequest(request, response);
 	}
 

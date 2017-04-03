@@ -8,8 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.handler.EnableTemplateVisit;
+
 @Controller
 @SpringBootApplication
+@EnableTemplateVisit
 public class DemoApplication extends SpringBootServletInitializer {
 	
 	@RequestMapping("/")

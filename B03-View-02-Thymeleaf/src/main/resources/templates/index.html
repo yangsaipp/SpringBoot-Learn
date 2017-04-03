@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+
+    <meta charset="utf-8" />
+    <title>首页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta th:replace="common :: header">
+    <style type="text/css"> 
+        body{
+            font-family:微软雅黑;
+            font-size:14px;
+        }
+    </style>    
+
+</head>
+
+<body>
+  <div th:replace="layout::topnav"></div>
+
+  <div th:replace="layout::content"></div>
+	
+  <div th:replace="common::scripts"></div>
+</body>
+
+</html>

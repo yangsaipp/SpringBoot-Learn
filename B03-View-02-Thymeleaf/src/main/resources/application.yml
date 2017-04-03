@@ -1,4 +1,10 @@
 spring:
   application:
     name: demo
+  template:
+    #suffix: .th
+  thymeleaf:
+    cache: false
+server:
+  context-path: /web
 name: hello22

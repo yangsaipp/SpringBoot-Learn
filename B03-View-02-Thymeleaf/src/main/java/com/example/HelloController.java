@@ -12,7 +12,7 @@ public class HelloController {
 	@Value("${name}")
 	private String name;
 	
-	@RequestMapping("/helloHtml")
+	@RequestMapping("/hello")
 	public String helloHtml(Map<String, Object> map) {
 		map.put("hello", "from HelloController.helloHtml");
 		System.out.println(name);
@@ -20,11 +20,9 @@ public class HelloController {
 		return "hello";
 	}
 	
-	@RequestMapping("/test/list")
-	public String testList(Map<String, Object> map) {
-		map.put("hello", "from HelloController.helloHtml");
-		System.out.println(name);
+	@RequestMapping("/home")
+	public String index(Map<String, Object> map) {
 		map.put("name", name);
-		return "/test/listNew";
+		return "index";
 	}
 }
