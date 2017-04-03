@@ -1,109 +1,110 @@
 <!DOCTYPE html>  
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-    <head>  
+    <head th:replace="common :: header(~{::title},~{::link})">  
         <title>人员列表</title>
-        <meta th:replace="common :: header">
-    </head>  
+        <link rel="stylesheet" th:href="@{/css/route.css}">
+    </head>
     <body> 
     	<div ng-app="routeApp" ng-controller="routeCtrl" ng-cloak>
         	<p>这是route列表页面</p>
         </div>  
-    </body>
-    <script th:replace="common :: scripts">
     
-    <script th:src="@{/js/route/route.js}"></script>
-    <script type="text/javascript">
-    angular.module('routeApp', ['RouteService'])
-	.controller('routeCtrl', ['$scope', '$window', 'Routes', function($scope, $window, Routes) {
-
-		$scope.pagination = {
-			page: 1,
-			perPage: 20
-		}
-
-		init();
-
-		function init() {
-			queryRoutes($scope.pagination);
-		}
-
-		var sInstancesDialog;
-		$scope.showServiceInstance = function (serviceId) {
-			var width =  800;
-			var height = 500; 
-			var url = 'service/ServiceInstanceList.jsp?serviceId=' + serviceId;
-			sInstancesDialog = cui.dialog({
-				id : "sInstancesDialog",
-				title : '服务实例',
-				src : url,
-				width : width,
-				height : height
-			});
-			sInstancesDialog.show(url);
-		}
-
-		$scope.keyWordQuery = function ($event) {
-			if($event.code === 'Enter' || $event.code === 'NumpadEnter') {
-				console.log('我按了enter。%o',$event)
+    <div th:replace="common :: script(~{::script})">
+    	<script th:src="@{/js/route/route.js}"></script>
+    	<script type="text/javascript">
+	    angular.module('routeApp', ['RouteService'])
+		.controller('routeCtrl', ['$scope', '$window', 'Routes', function($scope, $window, Routes) {
+	
+			$scope.pagination = {
+				page: 1,
+				perPage: 20
 			}
-		}
-
-		$scope.prev = function () {
-			$scope.pagination.page --;
-			queryRoutes($scope.pagination);
-		}
-
-		$scope.next = function () {
-			$scope.pagination.page ++;
-			queryRoutes($scope.pagination);
-		}
-		
-		$scope.checkAll = function() {
-			for(var index in $scope.routes) {
-				$scope.routes[index].checked = $scope.all;
+	
+			init();
+	
+			function init() {
+				queryRoutes($scope.pagination);
 			}
-		}
-		
-		$scope.del = function() {
-			var ids = [];
-			for(var index in $scope.routes) {
-				if($scope.routes[index].checked) {
-					ids.push($scope.routes[index].id);
+	
+			var sInstancesDialog;
+			$scope.showServiceInstance = function (serviceId) {
+				var width =  800;
+				var height = 500; 
+				var url = 'service/ServiceInstanceList.jsp?serviceId=' + serviceId;
+				sInstancesDialog = cui.dialog({
+					id : "sInstancesDialog",
+					title : '服务实例',
+					src : url,
+					width : width,
+					height : height
+				});
+				sInstancesDialog.show(url);
+			}
+	
+			$scope.keyWordQuery = function ($event) {
+				if($event.code === 'Enter' || $event.code === 'NumpadEnter') {
+					console.log('我按了enter。%o',$event)
 				}
 			}
-			if(ids.length > 0) {
-				Routes.batchDel(ids, function(){
-					queryRoutes($scope.pagination);
-				});	
+	
+			$scope.prev = function () {
+				$scope.pagination.page --;
+				queryRoutes($scope.pagination);
+			}
+	
+			$scope.next = function () {
+				$scope.pagination.page ++;
+				queryRoutes($scope.pagination);
 			}
 			
-		}
-
-		function queryRoutes(pagination) {
-			Routes.query({page: pagination.page, perPage: pagination.perPage}, function(routes) {
-				pagination.total = routes.total;
-				pagination.pages = parseInt((pagination.total  +  pagination.perPage  - 1) / pagination.perPage);
-				$scope.routes = routes.data;
-			});
-		}
-
-		// 表格render完后需要刷新iframe高度
-		$scope.renderFinsh = function() {
-			if($window.parent && $window.parent.autoIfream) {
-				$window.parent.autoIfream();
+			$scope.checkAll = function() {
+				for(var index in $scope.routes) {
+					$scope.routes[index].checked = $scope.all;
+				}
 			}
-		}
-		
-		$scope.edit = function(id) {
-			$window.location.href = 'route/Edit.jsp?id=' + id;
-		}
-
-		$scope.getGatewayPath = function() {
-			var location = $window.location
-			return location.protocol + '//' + location.host + contextPath;
-		}
-
-	}])
-	</script>
+			
+			$scope.del = function() {
+				var ids = [];
+				for(var index in $scope.routes) {
+					if($scope.routes[index].checked) {
+						ids.push($scope.routes[index].id);
+					}
+				}
+				if(ids.length > 0) {
+					Routes.batchDel(ids, function(){
+						queryRoutes($scope.pagination);
+					});	
+				}
+				
+			}
+	
+			function queryRoutes(pagination) {
+				Routes.query({page: pagination.page, perPage: pagination.perPage}, function(routes) {
+					pagination.total = routes.total;
+					pagination.pages = parseInt((pagination.total  +  pagination.perPage  - 1) / pagination.perPage);
+					$scope.routes = routes.data;
+				});
+			}
+	
+			// 表格render完后需要刷新iframe高度
+			$scope.renderFinsh = function() {
+				if($window.parent && $window.parent.autoIfream) {
+					$window.parent.autoIfream();
+				}
+			}
+			
+			$scope.edit = function(id) {
+				$window.location.href = 'route/Edit.jsp?id=' + id;
+			}
+	
+			$scope.getGatewayPath = function() {
+				var location = $window.location
+				return location.protocol + '//' + location.host + contextPath;
+			}
+	
+		}])
+		</script>
+    </div>
+	</body>
 </html>
