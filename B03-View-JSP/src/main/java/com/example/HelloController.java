@@ -37,7 +37,19 @@ public class HelloController {
 
 		map.put("hello", hello);
 
-		return "helloJsp";
+		return "helloJsp1";
+	}
+	
+	/**
+	 * src/main/reources/template目录下的JSP无法请求到
+	 * @param map map
+	 * @return String
+	 */
+	@RequestMapping("/helloJsp2")
+	public String helloJsp2(Map<String, Object> map) {
+		System.out.println("HelloController.helloJsp().hello=" + hello);
+		map.put("hello", hello);
+		return "helloJsp2";	 // 无法请求，404.
 	}
 	
 }

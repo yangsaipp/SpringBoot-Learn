@@ -1,0 +1,19 @@
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"> 
+    <head th:replace="common :: header(~{::title},~{::link})">  
+        <title>人员详情</title>
+        <link rel="stylesheet" th:href="@{/css/route.css}">
+    </head>
+    <body>  
+        <p>这是人员详情页面</p>  
+    </body>
+    <div th:replace="common :: script(~{::script})">
+    	<script th:src="@{/js/route/route.js}"></script>
+    	<script type="text/javascript">
+    		(function() {
+    			
+    		})();
+    	</script>
+    </div>
+</html> 
