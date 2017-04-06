@@ -59,4 +59,12 @@ public class Demo9ZuulApp {
 	public RouteLocator routeLocator() {
 		return new MyRouteLocator(this.server.getServletPrefix(), this.zuulProperties);
 	}
+	
+	/**
+	 * @return AuthFilter
+	 */
+	@Bean
+	public AuthFilter authFilter() {
+	    return new AuthFilter();
+	}
 }
