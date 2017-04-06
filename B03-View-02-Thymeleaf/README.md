@@ -2,7 +2,7 @@
 
 ## 疑问收集
 
-1. 代码片段引入，类似于jsp的include。
+1. 如何实现代码片段引入，类似于jsp的include？
 
 Thymeleaf有多种方式引入
 
@@ -51,7 +51,7 @@ Thymeleaf2缺点：
 
 <input class="form-control" name="serviceName" placeholder="输入一个服务名称，例如人员服务"    maxlength="100">
 
-``
+```
 
 2. 所有HTML元素的属性必须要有值
 
@@ -63,7 +63,7 @@ Thymeleaf2缺点：
 
 <input class="form-control" name="path" ng-model="route.path" maxlength="100" unique-Name required />
 
-``
+```
  
 3. JS方法里若有&特殊字符，则必须使用/*<![CDATA[*/和/*]]>*/进行转义。
 
