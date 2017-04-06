@@ -51,7 +51,7 @@ public class TemplateVisitConfiguration {
 	class HandlerProperties {
 		private String prefix;
 		
-		private String suffix = ".ht";
+		private String visitSuffix = ".ht";
 		
 		public String getPrefix() {
 			return prefix;
@@ -59,11 +59,11 @@ public class TemplateVisitConfiguration {
 		public void setPrefix(String prefix) {
 			this.prefix = prefix;
 		}
-		public String getSuffix() {
-			return suffix;
+		public String getVisitSuffix() {
+			return visitSuffix;
 		}
-		public void setSuffix(String suffix) {
-			this.suffix = suffix;
+		public void setVisitSuffix(String suffix) {
+			this.visitSuffix = suffix;
 		}
 	}
 }

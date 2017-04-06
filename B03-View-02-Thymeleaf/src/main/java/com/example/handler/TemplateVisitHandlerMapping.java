@@ -33,7 +33,7 @@ public class TemplateVisitHandlerMapping extends AbstractUrlHandlerMapping {
 	
 	@Override
 	protected Object lookupHandler(String urlPath, HttpServletRequest request) throws Exception {
-		registerHandler("/**/*"+ handlerProperties.getSuffix(), handler);
+		registerHandler("/**/*"+ handlerProperties.getVisitSuffix(), handler);
 		return super.lookupHandler(urlPath, request);
 	}
 }

@@ -43,7 +43,7 @@ spring:
 
 新建Controller
 
-```
+```java
 @Controller
 public class HelloController {
 

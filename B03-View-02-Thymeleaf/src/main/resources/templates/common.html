@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+    
 <head th:fragment="header(title,links)">
-	
 	<title th:replace="${title}?${title} : _">The awesome application</title>
 	<base th:href="@{/}" >
 	<meta charset="UTF-8">
@@ -17,9 +17,44 @@
 </head>
 
 <div th:fragment="script(scripts)">
+	
 	<script th:src="@{/webjars/angularjs/1.6.0/angular.js}"></script>
 	<script th:src="@{/webjars/angularjs/1.6.0/angular-resource.js}"></script>
 	<script th:src="@{/js/angular-base.js}"></script>
+	
+	<script type="text/javascript">
+	(function(win, angular){
+		var contextPath = '[[${#servletContext.contextPath}]]';
+		win.basePath = angular.basePath = function(path, param) {
+			if(path == null || path == '') {
+				return contextPath;
+			}
+			
+			if(!path.startsWith('/')) {
+				path = '/' + path;
+			}
+			
+			return contextPath + path +  getParamStr(path, param);
+		}
+		
+		function getParamStr(path, param) {
+			var paramStr = '';
+			if(param) {
+				var first = path.indexOf('?') == -1;
+				for(var prop in param) {
+					if(first) {
+						paramStr += '?';
+						first = false;
+					}else {
+						paramStr += '&';
+					}
+					paramStr += prop + '=' + param[prop];
+				}
+			}
+			return paramStr;
+		}
+	})(window, angular);
+	</script>
 	
 	<script src="webjars/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
   	<script th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>

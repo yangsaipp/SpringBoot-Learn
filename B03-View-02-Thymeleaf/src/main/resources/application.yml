@@ -2,7 +2,7 @@ spring:
   application:
     name: demo
   template:
-    #suffix: .th
+    #visit-suffix: .th
   thymeleaf:
     cache: false
 server:

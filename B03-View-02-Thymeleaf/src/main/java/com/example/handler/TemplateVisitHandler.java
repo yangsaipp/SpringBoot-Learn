@@ -50,7 +50,7 @@ public class TemplateVisitHandler {
 		log.info("************* handleRequestPath:" + request.getServletPath());
         // 截取地址
         String reqPath = request.getServletPath();
-        String templatePath = reqPath.substring(reqPath.indexOf("/") + 1, reqPath.lastIndexOf(handlerProperties.getSuffix()));
+        String templatePath = reqPath.substring(reqPath.indexOf("/") + 1, reqPath.lastIndexOf(handlerProperties.getVisitSuffix()));
         log.info("************* templatePath:" + templatePath);
         
 		return new ModelAndView(templatePath, model);

@@ -74,15 +74,6 @@
 
 	baseModule.factory( 'utils', [ '$window', '$rootScope', function( $window) {
 	   	return {
-		   	param: function (key)
-		   	{
-		        var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
-		        var r = $window.location.search.substr(1).match(reg);
-		        if(r!=null) {
-		        	return  unescape(r[2]); 
-		        }
-		        return null;
-		   	},
 		   	safeApply : function($scope, fn) {
 		        var phase = $scope.$root.$$phase;
 		        if(phase == '$apply' || phase == '$digest') {
@@ -96,8 +87,22 @@
 		                $scope.$apply();
 		            }
 		        }
-		    },
-		    uuid: function () {
+		    }
+	   }
+	}]);
+	
+	//angular.basePath = window.basePath;
+	
+	angular.extend(angular, {
+			param: function (key){
+		        var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+		        var r = $window.location.search.substr(1).match(reg);
+		        if(r!=null) {
+		        	return  unescape(r[2]); 
+		        }
+		        return null;
+		   	},
+			uuid: function () {
 				function s4() {
 			    	return Math.floor((1 + Math.random()) * 0x10000)
 			    		.toString(16)
@@ -105,7 +110,7 @@
 			  }
 			  return s4() + s4() + '-' + s4() + '-' + s4();
 			}
-	   }
-	}]);
+	});
+	
 })(angular);
 
