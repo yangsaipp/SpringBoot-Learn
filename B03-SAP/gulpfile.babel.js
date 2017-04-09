@@ -108,7 +108,7 @@ function libjs() {
 
 // copy 图片到输出目录，若PRODUCTION则压缩图片
 function images() {
-  return gulp.src("src/images/**/*")
+  return gulp.src(src + "images/**/*")
       // .pipe($.if(PRODUCTION, $.imagemin({
       //   progressive: true
       // })))
