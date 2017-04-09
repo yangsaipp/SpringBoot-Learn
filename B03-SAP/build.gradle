@@ -56,16 +56,19 @@ repositories {
 	maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
 }
 
+// 执行npm run dev任务，也就是gulp dev任务
 task gulpDev(type: NpmTask) {
   // install the express package only
   args = ['run', 'dev']
 }
 
+// 执行npm run build任务，也就是gulp build任务
 task gulpBuild(type: NpmTask) {
   // install the express package only
   args = ['run', 'build']
 }
 
+// 在jar插件任务processResources之前执行gulpBuild任务
 processResources.dependsOn(gulpBuild)
 
 dependencies {

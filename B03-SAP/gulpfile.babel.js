@@ -15,10 +15,11 @@ import browserSync from 'browser-sync';
 import rimraf   from 'rimraf';
 
 const $ = gulpLoadPlugins();
-// const reload = browserSync.reload;
 // 输出目录
 const dist = 'build/resources/main/static/';
+// 应用目录
 const src = 'src/main/ui/'
+
 const PRODUCTION = false;
 
 gulp.task('css',
