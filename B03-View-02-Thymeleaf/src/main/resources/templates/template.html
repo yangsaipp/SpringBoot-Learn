@@ -1,0 +1,25 @@
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"> 
+    <head th:replace="common :: header(~{::title},~{::link})">  
+        <title>标题</title>
+        <!-- <link rel="stylesheet" href="css/route.css"> -->
+    </head>
+    <body ng-app="app" ng-controller="appEdit">
+    	<div class="wrapper" style="background-color:#ecf0f5"> 
+    	 <p>页面内容</p>  
+    	</div>
+    </body>
+    <div th:replace="common :: script(~{::script})">
+    	<script type="text/javascript" src="js/app.js"></script>
+    	<script type="text/javascript">
+    		(function() {
+    			
+    		})();
+    		angular.module('app', ['ctp.base', 'appService']).controller('appEdit', ['$scope', '$window', 'Apps', 'AppNodes', 'Pointcuts', function($scope, $window, Apps, AppNodes, Pointcuts) {
+    			
+    			
+    		}]);
+    	</script>
+    </div>
+</html> 
