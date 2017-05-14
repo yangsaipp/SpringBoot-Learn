@@ -1,7 +1,6 @@
 package com.example.handler;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.beans.BeansException;
 import org.springframework.web.servlet.handler.AbstractUrlHandlerMapping;
 
 import com.example.handler.TemplateVisitConfiguration.HandlerProperties;
@@ -27,13 +26,18 @@ public class TemplateVisitHandlerMapping extends AbstractUrlHandlerMapping {
 		super();
 		this.handlerProperties = handlerProperties;
 		this.handler = handler;
-		setOrder(-200);
+		setOrder(-2);
 	}
 
 	
+	/**
+	 * Calls the {@link #registerHandlers} method in addition to the
+	 * superclass's initialization.
+	 */
 	@Override
-	protected Object lookupHandler(String urlPath, HttpServletRequest request) throws Exception {
+	public void initApplicationContext() throws BeansException {
+		super.initApplicationContext();
 		registerHandler("/**/*"+ handlerProperties.getVisitSuffix(), handler);
-		return super.lookupHandler(urlPath, request);
 	}
+
 }

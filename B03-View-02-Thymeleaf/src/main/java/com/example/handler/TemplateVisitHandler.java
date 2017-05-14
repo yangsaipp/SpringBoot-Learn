@@ -22,7 +22,15 @@ public class TemplateVisitHandler {
 	Logger log = LoggerFactory.getLogger(TemplateVisitHandler.class);
 
 	/** handlerProperties */
-	private final HandlerProperties handlerProperties;
+	private HandlerProperties handlerProperties;
+	
+	/**
+	 * 构造方法
+	 * @param handlerProperties
+	 */
+	public TemplateVisitHandler() {
+		super();
+	}
 	
 	/**
 	 * 构造方法

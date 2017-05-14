@@ -15,6 +15,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 	@RequestMapping("/")
     @ResponseBody
     String home() {
+		System.out.println("hello");
         return "Hello World!";
     }
 	

@@ -32,13 +32,13 @@ import com.example.model.RouteConfigVO;
  * @author lihuan
  *
  */
-@RestController
-public class RouteController {
+@RestController("/api")
+public class RouteResource {
 
 	/**
 	 * 日志
 	 */
-	static Logger log = LoggerFactory.getLogger(RouteController.class);
+	static Logger log = LoggerFactory.getLogger(RouteResource.class);
 	
 	/**
 	 * list
@@ -49,7 +49,7 @@ public class RouteController {
 	 * 
 	 * 构造函数
 	 */
-	public RouteController() {
+	public RouteResource() {
 		map = new HashMap<String, RouteConfigVO>();
 		RouteConfigVO vo = new RouteConfigVO();
 		vo.setId("1");
