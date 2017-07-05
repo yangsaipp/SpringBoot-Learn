@@ -6,19 +6,19 @@ public class User {
 
 	private String id;
 	private String name;
-	private String account = "admin";
+	private String account;
 	private String password;
 	private String sex;
 	
 	public static Map<String, User> map = new HashMap<String, User>();
 	
 	static{
-		map.put("1", new User("1","张三","123","1"));
-		map.put("2", new User("2","李四","123","1"));
-		map.put("3", new User("3","王五","123","1"));
-		map.put("4", new User("4","赵六","123","2"));
-		map.put("5", new User("5","孙七","123","2"));
-		map.put("6", new User("6","钱八","123","2"));
+		map.put("1", new User("1","张三","123","1", "admin1"));
+		map.put("2", new User("2","李四","123","1", "admin2"));
+		map.put("3", new User("3","王五","123","1", "admin3"));
+		map.put("4", new User("4","赵六","123","2", "admin4"));
+		map.put("5", new User("5","孙七","123","2", "admin5"));
+		map.put("6", new User("6","钱八","123","2", "admin6"));
 	}
 	
 	public static User get(String id) {
@@ -43,12 +43,13 @@ public class User {
 		super();
 	}
 
-	public User(String id, String name, String password, String sex) {
+	public User(String id, String name, String password, String sex, String account) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.sex = sex;
+		this.account = account;
 	}
 	public String getId() {
 		return id;

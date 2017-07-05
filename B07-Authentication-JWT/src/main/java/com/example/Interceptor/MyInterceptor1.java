@@ -1,5 +1,9 @@
 package com.example.Interceptor;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
+
 import java.io.OutputStreamWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +25,25 @@ public class MyInterceptor1 implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-    	String token = (String) request.getAttribute("x-auth-token");
-    	if(!StringUtils.isEmpty(token) && request.getSession().getAttribute(token) != null) {
-    		return true;
+    	System.out.println("===preHandle");
+    	String token = (String) request.getHeader("x-auth-token");
+    	if(!StringUtils.isEmpty(token)) {
+    		try {
+    			Jwts.parser().setSigningKey("ys_test").parseClaimsJws(token);
+    			return true;
+	    	} catch (SignatureException e) {
+	    		response.setStatus(401);
+	    		OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream(),"UTF-8");
+	    		out.write("无权访问.");
+	    		out.flush();
+	    		out.close();
+	    		return false;
+	    	}
+    		
     	}else {
     		response.setStatus(401);
     		OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream(),"UTF-8");
-    		out.write("验证错误.");
+    		out.write("无权访问.");
     		out.flush();
     		out.close();
     		return false;
