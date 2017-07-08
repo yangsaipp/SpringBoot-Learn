@@ -11,6 +11,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,18 +48,25 @@ public class LoginController {
 	
 	private String createToken(User user) {
 		Date iat = new Date();	// 签发时间
-		Date nbf = new Date();	// 
+		Date nbf = new Date();	// 定义在什么时间内是不可使用
+		Calendar now = Calendar.getInstance();
+		now.add(Calendar.MINUTE, 1);
+		Date exp = new Date(now.getTimeInMillis()); 	// 过期时间设置为1分钟
+		now.add(Calendar.MINUTE, 5);
+		Date validDate = new Date(now.getTimeInMillis()); 	// 有效刷新时间设置为5分钟
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("userId", user.getId());
-		String compactJws = Jwts.builder()
+		map.put("userId", user.getId());	// 存放登录用户id
+		map.put("validDate", validDate);
+		String token = Jwts.builder()
 		  .setClaims(map)
 		  .setSubject(user.getName())
 		  .setIssuedAt(iat)
 		  .setNotBefore(nbf)
+		  .setExpiration(exp)
 		  .setId(UUID.randomUUID().toString())
-		  .signWith(SignatureAlgorithm.HS512, key)
+		  .signWith(SignatureAlgorithm.HS512, key)	// 使用key进行签名
 		  .compact();
-		return compactJws;
+		return token;
 	}
 	
 	/**
@@ -95,9 +103,10 @@ public class LoginController {
 	/**
 	 * 登出
 	 */
-	@RequestMapping(value = "/loginOut", method = RequestMethod.DELETE)
-	public Object loginOut() {
-		return null;
+	@RequestMapping(value = "/api/loginOut", method = RequestMethod.DELETE)
+	public Object loginOut(@RequestHeader("x-auth-token") String token) {
+		System.out.println("====:" + token);
+		return "login out sucess";
 	}
 	
 	/**

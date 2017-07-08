@@ -8,6 +8,7 @@
 package com.example;
 
 import java.security.Key;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,22 +37,30 @@ public class JWTTest {
 //		Key key = MacProvider.generateKey();
 		
 		Date iat = new Date();	// 签发时间
-		Date nbf = new Date();
+		Date nbf = new Date();	// 定义在什么时间内是不可使用
+		Calendar now = Calendar.getInstance();
+		now.add(Calendar.MINUTE, 1);
+		Date exp = new Date(now.getTimeInMillis()); 	// 过期时间设置为1分钟
+		now.add(Calendar.MINUTE, 5);
+		Date validDate = new Date(now.getTimeInMillis()); 	// 有效刷新时间设置为5分钟
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("userId", "123456");
+//		map.put("userId", user.getId());
+		map.put("validDate", validDate);
 		String compactJws = Jwts.builder()
 		  .setClaims(map)
 		  .setSubject("Joe")
 		  .setIssuedAt(iat)
 		  .setNotBefore(nbf)
+		  .setExpiration(exp)
 		  .setId(UUID.randomUUID().toString())
 		  .signWith(SignatureAlgorithm.HS512, key)
 		  .compact();
 		System.out.println(compactJws);
 		assert Jwts.parser().setSigningKey(key).parseClaimsJws(compactJws).getBody().getSubject().equals("Joe");
-		Claims claims  = Jwts.parser().setSigningKey("sss").parseClaimsJws(compactJws).getBody();
+		Claims claims  = Jwts.parser().setSigningKey(key).parseClaimsJws(compactJws).getBody();
 		claims.getIssuedAt().equals(iat);
 		System.out.println(claims.getId());
-		System.out.println(claims.get("userId"));
+		System.out.println(claims.getExpiration());
+		System.out.println(claims.get("validDate", Date.class));
 	}
 }

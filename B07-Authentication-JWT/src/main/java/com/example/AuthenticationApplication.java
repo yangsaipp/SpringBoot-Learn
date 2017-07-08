@@ -39,6 +39,7 @@ public class AuthenticationApplication extends SpringBootServletInitializer {
         corsConfiguration.addAllowedOrigin("*");  
         corsConfiguration.addAllowedHeader("*");  
         corsConfiguration.addAllowedMethod("*");  
+        corsConfiguration.setMaxAge(1728000L);
         return corsConfiguration;  
     }  
       
