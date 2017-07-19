@@ -1,0 +1,36 @@
+buildscript {
+	repositories {
+		maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '1.5.1.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'project-report'
+
+// 配置springBoot插件
+springBoot {
+    // 指定SpringBoot启动类
+	// mainClass = 'com.comtop.DartApplication'
+}
+
+repositories {
+//    jcenter()
+	mavenLocal()
+	maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
+}
+
+dependencies {
+	// 引入dart-framework
+	compile('org.springframework.boot:spring-boot-starter')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	runtime('org.springframework.boot:spring-boot-devtools')
+	compile('io.springfox:springfox-swagger2:2.2.2')
+	compile('io.springfox:springfox-swagger-ui:2.2.2')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

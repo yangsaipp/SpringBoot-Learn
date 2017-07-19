@@ -1,0 +1,6 @@
+# 页面默认前缀目录
+spring:
+  mvc:
+    view:
+     prefix: /gateway/
+     suffix: .jsp
