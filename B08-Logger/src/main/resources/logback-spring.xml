@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<!-- 开发环境和演示环境 -->
+	<springProfile name="debug,staging">
+	    <logger name="com.example.LogController" level="DEBUG"/>
+	</springProfile>
+	
+	<!-- 生产环境 -->
+	<springProfile name="production">
+	    <logger name="com.example.LogController" level="INFO"/>
+	</springProfile>
+	
+	<!-- 非生产环境 -->
+	<springProfile name="!production">
+	    <logger name="com.example.LogController" level="INFO"/>
+	</springProfile>
+</configuration>

@@ -1,0 +1,63 @@
+buildscript {
+	repositories {
+		maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '1.5.1.RELEASE'
+}
+
+apply plugin: 'java'
+//apply plugin: 'war'
+apply plugin: 'maven-publish'	// 发布Jar包插件
+apply plugin: 'project-report'
+
+// 配置springBoot插件
+springBoot {
+    // 指定SpringBoot启动类
+	// mainClass = 'com.comtop.DartApplication'
+}
+
+repositories {
+//    jcenter()
+	mavenLocal()
+	maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
+}
+
+dependencies {
+	
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	
+	runtime('org.springframework.boot:spring-boot-devtools')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+ext {
+	artifactId = project.name
+}
+
+task sourceJar(type: Jar) {
+	from sourceSets.main.allJava
+	baseName project.artifactId
+	classifier "sources"
+}
+
+group = 'org.yancey'
+version = '1.0'
+// 运行publish命令发布到jar到指定中央仓库，运行publishToMavenLocal命令发布到本地maven仓库
+publishing {
+	publications {
+		pb(MavenPublication) { // 运行publishToMavenLocal命令
+			artifactId project.artifactId
+			from components.java
+			artifact sourceJar
+			pom.withXml {
+				def root = asNode()
+			}
+		}
+	}
+}
