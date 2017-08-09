@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.junit.Test;
 
 import io.jsonwebtoken.Claims;
@@ -62,5 +64,37 @@ public class JWTTest {
 		System.out.println(claims.getId());
 		System.out.println(claims.getExpiration());
 		System.out.println(claims.get("validDate", Date.class));
+	}
+	
+	@Test
+	public void testBase64Encode() {
+		// We need a signing key, so we'll create one just for this example. Usually
+		// the key would be read from your application configuration instead.
+//		Key key = MacProvider.generateKey();
+		
+		Date iat = new Date();	// 签发时间
+		Date nbf = new Date();	// 定义在什么时间内是不可使用
+		Calendar now = Calendar.getInstance();
+		now.add(Calendar.MINUTE, 1);
+		Date exp = new Date(now.getTimeInMillis()); 	// 过期时间设置为1分钟
+		now.add(Calendar.MINUTE, 5);
+		Date validDate = new Date(now.getTimeInMillis()); 	// 有效刷新时间设置为5分钟
+		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("userId", user.getId());
+		map.put("validDate", validDate);
+		String compactJws = Jwts.builder()
+		  .setClaims(map)
+		  .setSubject("杨赛")
+		  .setIssuedAt(iat)
+		  .setNotBefore(nbf)
+		  .setExpiration(exp)
+		  .setId(UUID.randomUUID().toString())
+		  .signWith(SignatureAlgorithm.HS512, key)
+		  .compact();
+		System.out.println(compactJws);
+		System.out.println(compactJws.split("\\.")[1]);
+		byte[] arr = DatatypeConverter.parseBase64Binary(compactJws.split("\\.")[1]);
+		String str = new String(arr);
+		System.out.println(str);
 	}
 }
