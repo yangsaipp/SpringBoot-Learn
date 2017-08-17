@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,8 +18,9 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix="my.config")
 public class MyConfig {
 	
+	@NotNull
 	private String name;
-	
+	@NotNull(message="port不能为空")
 	private Integer port;
 	
 //	private List<String> servers = new LinkedList<String>();

@@ -7,7 +7,6 @@
 
 package com.example;
 
-import java.security.Key;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,9 +18,9 @@ import javax.xml.bind.DatatypeConverter;
 import org.junit.Test;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 
 /**
  * @author  杨赛
@@ -96,5 +95,41 @@ public class JWTTest {
 		byte[] arr = DatatypeConverter.parseBase64Binary(compactJws.split("\\.")[1]);
 		String str = new String(arr);
 		System.out.println(str);
+	}
+	
+	@Test
+	public void testCompress() {
+		Date iat = new Date();	// 签发时间
+		Date nbf = new Date();	// 定义在什么时间内是不可使用
+		Calendar now = Calendar.getInstance();
+		now.add(Calendar.MINUTE, 1);
+		Date exp = new Date(now.getTimeInMillis()); 	// 过期时间设置为1分钟
+		now.add(Calendar.MINUTE, 5);
+		Date validDate = new Date(now.getTimeInMillis()); 	// 有效刷新时间设置为5分钟
+		Map<String, Object> map = new HashMap<String, Object>();
+		String id = UUID.randomUUID().toString();
+//		map.put("userId", user.getId());
+		map.put("validDate", validDate);
+		String compactJws = Jwts.builder()
+		  .setClaims(map)
+		  .setSubject("杨赛")
+		  .setIssuedAt(iat)
+		  .setNotBefore(nbf)
+		  .setExpiration(exp)
+		  .setId(id)
+		  .signWith(SignatureAlgorithm.HS512, key)
+		  .compact();
+		System.out.println("压缩前：" + compactJws);
+		compactJws = Jwts.builder()
+				  .setClaims(map)
+				  .setSubject("杨赛")
+				  .compressWith(CompressionCodecs.GZIP)
+				  .setIssuedAt(iat)
+				  .setNotBefore(nbf)
+				  .setExpiration(exp)
+				  .setId(id)
+				  .signWith(SignatureAlgorithm.HS512, key)
+				  .compact();
+		System.out.println("压缩后：" + compactJws);
 	}
 }

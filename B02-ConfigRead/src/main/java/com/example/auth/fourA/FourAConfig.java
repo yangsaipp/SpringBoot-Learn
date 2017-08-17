@@ -1,12 +1,15 @@
 package com.example.auth.fourA;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import javax.validation.constraints.NotNull;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix="auth.4a")
 public class FourAConfig {
 	private boolean enabled = false;
 	
+	@NotNull
 	private String serverUrl;
 	
 	private int order = 0;

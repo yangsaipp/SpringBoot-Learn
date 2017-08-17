@@ -1,4 +1,4 @@
-package com.example;
+package com.example.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
