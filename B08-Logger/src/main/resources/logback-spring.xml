@@ -4,7 +4,7 @@
 	<property name="FILE_LOG_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %logger \\(%file:%line\\) - %msg%n"/>
 	<!-- 开发环境 -->
 	<springProfile name="dev">
-		<logger name="com.example.LogController" level="DEBUG"/>
+		<logger name="com.example" level="DEBUG"/>
 	</springProfile>
 	<!-- 非开发环境 -->
 	<springProfile name="!dev">

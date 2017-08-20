@@ -8,11 +8,30 @@
 
 2. 如何不重启应用修改指定类日志级别？
 
-引入spring-boot-starter-actuator，通过Rest接口可以管理类的logger级别（查看，修改）。
+spring-boot-starter-actuator提供了在运行时管理logger的endpoint。
+
+```
+// 查看所有的logger配置
+curl -i http://127.0.0.1:8080/loggers
+
+// 查看指定类的logger配置，输出{"configuredLevel":"DEBUG","effectiveLevel":"DEBUG"}
+curl -i http://127.0.0.1:8080/loggers/com.example.LogController
+
+// 修改指定类的logger级别
+curl -X POST -H "Content-type:application/json;charset=UTF-8" -d '{"configuredLevel":"INFO"}' http://127.0.0.1:8080/loggers/com.example.LogController
+```
+
+logger配置说明：
+1. configuredLevel，当前类配置的logger级别。
+2. effectiveLevel，当前类生效的logger级别。
+
+当前类生效级别等于当前类的配置级别，若无配置级别则以最近的父类的配置级别为准。
+
+[loggers](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-loggers)
 
 ## 重点摘要
 
-[springboot日志配置]http://docs.spring.io/spring-boot/docs/1.5.1.RELEASE/reference/htmlsingle/#boot-features-logging
+[springboot日志配置](http://docs.spring.io/spring-boot/docs/1.5.1.RELEASE/reference/htmlsingle/#boot-features-logging)
 
 [logback配置文档](https://logback.qos.ch/manual/configuration.html#autoScan)
 
