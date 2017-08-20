@@ -2,11 +2,11 @@
 
 ## 疑问收集
 
-1. 如何在不同环境使用不同logger配置，如开发环境、演示环境、生产环境
+**1. 如何在不同环境使用不同logger配置，如开发环境、演示环境、生产环境**
 
 使用logback-spring.xml配置文件，通过springProfile元素为不同环境配置好logger配置，启动时通过增加--spring.profiles.active=dev的参数来指定激活那个环境下的配置。
 
-2. 如何不重启应用修改指定类日志级别？
+**2. 如何不重启应用修改指定类日志级别？**
 
 spring-boot-starter-actuator提供了在运行时管理logger的endpoint。
 
