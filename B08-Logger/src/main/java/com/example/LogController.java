@@ -24,7 +24,7 @@ public class LogController {
 	 */
 	static Logger log = LoggerFactory.getLogger(LogController.class);
 	
-	@RequestMapping(value = "/logs", method = RequestMethod.GET)
+	@RequestMapping(value = "/logTest", method = RequestMethod.GET)
 	public Object logs(){
 		System.out.println("sdfasdf");
 		log.error("error");

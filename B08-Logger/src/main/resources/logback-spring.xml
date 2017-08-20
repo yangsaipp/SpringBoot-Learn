@@ -2,21 +2,20 @@
 <configuration>
 	<property name="CONSOLE_LOG_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %logger \\(%file:%line\\) - %msg%n"/>
 	<property name="FILE_LOG_PATTERN" value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %logger \\(%file:%line\\) - %msg%n"/>
-	<property name="LOG_FILE" value="test.log"/>
-	
-	<include resource="org/springframework/boot/logging/logback/base.xml"/>
-	<!-- 开发环境和演示环境 -->
-	<springProfile name="debug,staging">
-	    <logger name="com.example.LogController" level="DEBUG"/>
+	<!-- 开发环境 -->
+	<springProfile name="dev">
+		<logger name="com.example.LogController" level="DEBUG"/>
 	</springProfile>
-	
+	<!-- 非开发环境 -->
+	<springProfile name="!dev">
+		<property name="LOG_FILE" value="logs/test.log"/>
+		<logger name="com.example.LogController" level="INFO"/>
+	</springProfile>
 	<!-- 生产环境 -->
 	<springProfile name="production">
+		<property name="LOG_FILE" value="logs/test.log"/>
 	    <logger name="com.example.LogController" level="INFO"/>
 	</springProfile>
-	
-	<!-- 非生产环境 -->
-	<springProfile name="!production">
-	    <logger name="com.example.LogController" level="INFO"/>
-	</springProfile>
+	<!-- 需要放在 property之后，property属性设置才有作用 -->
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
 </configuration>
