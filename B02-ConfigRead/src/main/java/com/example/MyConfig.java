@@ -28,8 +28,8 @@ public class MyConfig {
 	
 	@Override
 	public String toString() {
-		return name + " : " + port + "<br/>" 
-        		+ "servers : " + servers.get(0) + " " + servers.get(1);
+		return "MyConfig [name=" + name + ", port=" + port + ", servers="
+				+ servers + "]";
 	}
 
 	public String getName() {
