@@ -1,4 +1,4 @@
-package com.example.ex1;
+package com.example.ex2;
 
 import java.io.IOException;
 
@@ -12,13 +12,13 @@ import javax.servlet.ServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class IndexFilter implements Filter {
-	Log log = LogFactory.getLog(IndexFilter.class);
+public class IndexFilter2 implements Filter {
+	Log log = LogFactory.getLog(IndexFilter2.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		log.info(filterConfig.getInitParameter("url"));
-		log.info("init IndexFilter");
+		log.info("init IndexFilter2");
 	}
 
 	@Override

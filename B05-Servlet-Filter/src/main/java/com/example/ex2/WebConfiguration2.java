@@ -5,7 +5,7 @@
 * 复制、修改或发布本软件.
 *****************************************************************************/
 
-package com.example.ex1;
+package com.example.ex2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,15 +19,15 @@ import org.springframework.context.annotation.Configuration;
  * @since jdk1.7
  * @version 2017年8月18日 杨赛
  */
-@Configuration
-public class WebConfiguration {
+//@Configuration
+public class WebConfiguration2 {
 
 	@Bean
 	public FilterRegistrationBean indexFilterRegistration() {
-		FilterRegistrationBean registration = new FilterRegistrationBean(new IndexFilter());
+		FilterRegistrationBean registration = new FilterRegistrationBean(new IndexFilter2());
 		registration.addUrlPatterns("/");
 		Map<String, String> initParameters = new HashMap<String, String>();
-		initParameters.put("url", "http://baidu.com");
+		initParameters.put("url", "http://www.google.com");
 		registration.setInitParameters(initParameters);
 		return registration;
 	}
