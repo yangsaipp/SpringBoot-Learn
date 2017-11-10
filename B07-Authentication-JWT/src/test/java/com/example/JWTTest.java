@@ -7,6 +7,10 @@
 
 package com.example;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -132,4 +136,5 @@ public class JWTTest {
 				  .compact();
 		System.out.println("压缩后：" + compactJws);
 	}
+	
 }
