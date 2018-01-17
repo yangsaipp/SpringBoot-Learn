@@ -3,6 +3,8 @@ package com.hellokoding.jpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class HelloJpaApplication implements CommandLineRunner {
     @Transactional
     public void run(String... strings) throws Exception {
         // save a couple of categories
-        BookCategory categoryA = new BookCategory("Category A");
+        final BookCategory categoryA = new BookCategory("Category A");
         Set bookAs = new HashSet<Book>(){{
             add(new Book("Book A1", categoryA));
             add(new Book("Book A2", categoryA));
@@ -37,7 +39,7 @@ public class HelloJpaApplication implements CommandLineRunner {
         }};
         categoryA.setBooks(bookAs);
 
-        BookCategory categoryB = new BookCategory("Category B");
+        final BookCategory categoryB = new BookCategory("Category B");
         Set bookBs = new HashSet<Book>(){{
             add(new Book("Book B1", categoryB));
             add(new Book("Book B2", categoryB));
