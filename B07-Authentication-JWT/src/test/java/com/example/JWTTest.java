@@ -29,7 +29,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 public class JWTTest {
 	
-	private String key = "test";
+	private String key = "ys-secret";
 
 	@Test
 	public void testCreate() {
@@ -54,7 +54,7 @@ public class JWTTest {
 		  .setNotBefore(nbf)
 		  .setExpiration(exp)
 		  .setId(UUID.randomUUID().toString())
-		  .signWith(SignatureAlgorithm.HS512, key)
+		  .signWith(SignatureAlgorithm.HS256, key)
 		  .compact();
 		System.out.println(compactJws);
 		assert Jwts.parser().setSigningKey(key).parseClaimsJws(compactJws).getBody().getSubject().equals("Joe");

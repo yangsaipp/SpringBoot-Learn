@@ -54,7 +54,7 @@ public class Demo9ZuulApp {
 	@Autowired
 	protected ServerProperties server;
 
-	@Bean
+//	@Bean
 //	 MyRouteLocator替换自动配置使用的SimpleRouteLocator
 	public RouteLocator routeLocator() {
 		return new MyRouteLocator(this.server.getServletPrefix(), this.zuulProperties);
