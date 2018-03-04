@@ -25,10 +25,23 @@ public class WebConfiguration {
 	@Bean
 	public FilterRegistrationBean indexFilterRegistration() {
 		FilterRegistrationBean registration = new FilterRegistrationBean(new IndexFilter());
-		registration.addUrlPatterns("/");
+		registration.addUrlPatterns("/*");
 		Map<String, String> initParameters = new HashMap<String, String>();
 		initParameters.put("url", "http://baidu.com");
 		registration.setInitParameters(initParameters);
+		registration.setOrder(Integer.MIN_VALUE + 1);
+		return registration;
+	}
+	
+	@Bean
+	public FilterRegistrationBean indexFiltersssss() {
+		System.out.println("22222");
+		FilterRegistrationBean registration = new FilterRegistrationBean(new IndexFilter2());
+		registration.addUrlPatterns("/*");
+		Map<String, String> initParameters = new HashMap<String, String>();
+		initParameters.put("url", "http://baidu.com");
+		registration.setInitParameters(initParameters);
+//		registration.setOrder(-111);
 		return registration;
 	}
 	

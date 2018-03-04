@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class IndexFilter implements Filter {
-	Log log = LogFactory.getLog(IndexFilter.class);
+public class IndexFilter2 implements Filter {
+	Log log = LogFactory.getLog(IndexFilter2.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		log.info(filterConfig.getInitParameter("url"));
-		log.info("init IndexFilter");
+		log.info("init IndexFilter2");
+		System.out.println("222");
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class IndexFilter implements Filter {
 		HttpServletRequest objHttpServletRequest = (HttpServletRequest)servletRequest;
 		System.out.println(servletRequest.getServletContext().getServerInfo());
 		System.out.println(servletRequest.getServletContext().getContextPath());
-		log.info("doFilter IndexFilter");
+		log.info("doFilter IndexFilter2");
 		String strBackUrl = "http://" + objHttpServletRequest.getServerName() //服务器地址  
         + ":"   
         + objHttpServletRequest.getServerPort()           //端口号  
@@ -48,12 +49,11 @@ public class IndexFilter implements Filter {
 		if(objHttpServletRequest.getQueryString() != null) {
 			sbBackUrl.append("?").append(objHttpServletRequest.getQueryString()); //参数
 		}
-		MyHttpResponse my = new MyHttpResponse((HttpServletResponse)servletResponse);
-		filterChain.doFilter(servletRequest, my);
-//		log.info(sbBackUrl);
-//		HttpServletResponse res = (HttpServletResponse)servletResponse;
-		//res.setHeader("location","");
-		//res.setStatus(401);
+		HttpServletResponse res = (HttpServletResponse)servletResponse;
+		res.sendRedirect("https://www.baidu.com");;
+		// filterChain.doFilter(servletRequest, servletResponse);
+		log.info(sbBackUrl);
+
 	}
 
 	@Override

@@ -25,10 +25,10 @@ public class IndexFilter2 implements Filter {
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
 		String url = servletRequest.getServletContext().getRealPath("/");
-		System.out.println(url);
+		System.out.println("啊" + url);
 		System.out.println(servletRequest.getServletContext().getServerInfo());
 		System.out.println(servletRequest.getServletContext().getContextPath());
-		log.info("doFilter IndexFilter");
+		log.info("doFilter IndexFilter2");
 		filterChain.doFilter(servletRequest, servletResponse);
 
 	}
