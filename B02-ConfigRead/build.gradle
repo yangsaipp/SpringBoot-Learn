@@ -30,7 +30,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/commons-lang/commons-lang
 	compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
 	
-	
+	compile fileTree(dir: 'build/libs', include: ['ConfigRead.jar'])
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.boot:spring-boot-starter-web")
 	runtime('org.springframework.boot:spring-boot-devtools')
