@@ -10,6 +10,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'eclipse'
 apply plugin: 'project-report'
 
 // 配置springBoot插件
@@ -36,4 +37,32 @@ dependencies {
 	providedRuntime('javax.servlet:javax.servlet-api')
 	providedRuntime('javax.servlet:jstl')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+eclipse{
+	// 使用eclipse-Buildship-plugin不会执行eclipseJdt任务，无法定制org.eclipse.jdt.core.prefs文件
+	jdt {
+		file {
+			beforeMerged { jdt ->
+				println '===beforeMerged'
+			
+			}
+			withProperties { properties ->
+				println '===withProperties'
+				//读取cap目录下的org.eclipse.jdt.core.prefs文件用户eclipse jdt配置
+				//主要用于生成eclipse工程代码错误警告配置
+				new File("${rootProject.projectDir}/org.eclipse.jdt.core.prefs").withInputStream {
+					properties.load(it)
+				}
+			}
+			whenMerged { jdt ->
+				println '===whenMerged'
+				def props = new Properties()
+				new File("${rootProject.projectDir}/org.eclipse.jdt.core.prefs").withInputStream { 
+				  stream -> props.load(stream) 
+				}
+	        	jdt.load(props)
+	    	}
+		}
+	}
 }
