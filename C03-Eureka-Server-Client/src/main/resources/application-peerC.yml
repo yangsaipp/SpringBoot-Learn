@@ -1,0 +1,20 @@
+info:
+  component: Eureka Client
+spring:
+  application:
+    name: eurekaclient-C
+management:
+  context_path: /admin
+  security:
+    enabled: false
+#配置服务端口号
+server:
+  port: 8754
+  
+#配置Eureka服务信息
+eureka:
+  client:
+    #register-with-eureka: false
+    #fetch-registry: false
+    service-url:
+      defaultZone: http://SuperAdmin:123@localhost:8764/eureka

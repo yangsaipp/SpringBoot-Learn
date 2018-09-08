@@ -35,6 +35,7 @@ import com.example.model.RouteConfigVO;
 @RestController("/api")
 public class RouteResource {
 
+	private static final ThreadLocal<String> tl = new ThreadLocal<String>();
 	/**
 	 * 日志
 	 */
@@ -88,6 +89,8 @@ public class RouteResource {
 	 */
 	@RequestMapping(value = "/routes", method = RequestMethod.GET)
 	public Object pageList(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "perPage", defaultValue = "100") int perPage){
+		System.out.println("set thead:"+ Thread.currentThread().getName());
+		tl.set("routes");
 		System.out.println("page:"+ page);
 		System.out.println("perPage:"+ perPage);
 		Map<String,Object> routes = new HashMap<String,Object>();
@@ -105,6 +108,8 @@ public class RouteResource {
 	 */
 	@RequestMapping(value = "/routes/{id}", method = RequestMethod.GET)
 	public Object get(@PathVariable String id){
+		System.out.println("get thead:"+ Thread.currentThread().getName());
+		System.out.println("threadLocal: " + tl.get());
 		return map.get(id);
 	}
 	

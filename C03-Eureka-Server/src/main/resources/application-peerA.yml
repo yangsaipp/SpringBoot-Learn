@@ -1,0 +1,17 @@
+info:
+  component: server-A
+spring:
+  application:
+    name: server-A
+
+#配置服务端口号
+server:
+  port: 8762
+  
+#配置Eureka服务信息
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://SuperAdmin:123@localhost:8763/eureka,http://SuperAdmin:123@localhost:8764/eureka
