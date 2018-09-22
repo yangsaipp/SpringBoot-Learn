@@ -9,6 +9,7 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
 apply plugin: 'project-report'
 
 // 配置springBoot插件
@@ -17,11 +18,14 @@ springBoot {
 //	mainClass = 'com.comtop.DartApplication'
 }
 
+
 repositories {
 //    jcenter()
 	mavenLocal()
 	maven{url "http://maven.aliyun.com/nexus/content/groups/public"}
 }
+
+sourceCompatibility = 1.7
 
 dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-zuul')
@@ -31,6 +35,7 @@ dependencies {
 //	compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 	runtime("org.springframework.boot:spring-boot-devtools")
     compile 'org.slf4j:slf4j-api:1.7.7'
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:1.5.1.RELEASE")
     testCompile "junit:junit:4.11"
 }
 

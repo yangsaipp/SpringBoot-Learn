@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<statusListener
+		class="ch.qos.logback.core.status.OnConsoleStatusListener" />
+
+	<property name="CONSOLE_LOG_PATTERN"
+		value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %logger \\(%file:%line\\) - %msg%n" />
+	<property name="FILE_LOG_PATTERN"
+		value="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %logger \\(%file:%line\\) - %msg%n" />
+	<!-- 1.外置Tomcat环境下，日志将会存放到Tomcat的logs目录 2.java -jar或者main方法启动时，日志将会存放到运行命令时所处的目录 -->
+	<property name="LOG_FILE"
+		value="${LOG_FILE:-${LOG_PATH:-${catalina.home:-${LOG_TEMP:-.}}}/logs/zuul.log}" />
+
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<include
+		resource="org/springframework/boot/logging/logback/console-appender.xml" />
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE}</file>
+		<!-- 只记录info以上级别日志 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${LOG_FILE}-%d{yyyy-MM-dd}-%i</fileNamePattern>
+			<!-- each file should be at most 100MB, keep 60 days worth of history, 
+				but at most 20GB -->
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>60</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</included>

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.RoutesRefreshedEvent;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableZuulProxy
 // @EnableAutoConfiguration(exclude={SimpleRouteLocator.class})
-public class Demo9ZuulApp {
+public class Demo9ZuulApp extends SpringBootServletInitializer {
 	
 	static Logger log = LoggerFactory.getLogger(Demo9ZuulApp.class);
 	
@@ -40,6 +42,13 @@ public class Demo9ZuulApp {
 //		}, 5000);
 	}
 	
+	
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Demo9ZuulApp.class);
+    }
+
+
 	@RequestMapping("/refresh")
     @ResponseBody
     String home() {
