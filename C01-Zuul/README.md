@@ -27,6 +27,8 @@ zuul:
       url: https://downstream
 ```
 
+### 4.统一异常处理
+
 ## 重点摘要
 
 ### 客户端注册
