@@ -1,8 +1,11 @@
 package com.comtop.exp.gateway.zuul.errorFilter;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -24,7 +27,7 @@ import com.netflix.zuul.context.RequestContext;
  */
 public class ErrorFilter extends ZuulFilter {
 
-    Logger log = Logger.getLogger(ErrorFilter.class);
+    private static Logger log = LoggerFactory.getLogger(ErrorFilter.class);
 
     @Override
     public String filterType() {
