@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo
+    
+management:
+  port: 5888	# 使用http://127.0.0.1:5888/actuator访问
+  context-path: /actuator
+  security:
+    enabled: true
+    role: SUPERUSER
+security:
+  user:
+    name: admin
+    password: admin

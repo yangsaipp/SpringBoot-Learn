@@ -5,3 +5,6 @@ spring:
     view:
      prefix: /WEB-INF/
      suffix: .jsp
+management:
+  security:
+    enabled: false

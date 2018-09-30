@@ -30,6 +30,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.boot:spring-boot-starter-web")
 	runtime('org.springframework.boot:spring-boot-devtools')
+	runtime('org.springframework.boot:spring-boot-starter-actuator')
 
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 //	引入jsp解析类
