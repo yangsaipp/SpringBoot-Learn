@@ -27,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
 @ConditionalOnClass(value = { RestTemplate.class, HttpClient.class })
 public class RestTemplateConfiguration {
 
-	@Value("${remote.maxTotalConnect:0}")
+	@Value("${remote.maxTotalConnect:400}")
 	private int maxTotalConnect; // 连接池的最大连接数默认为0
 	@Value("${remote.maxConnectPerRoute:200}")
 	private int maxConnectPerRoute; // 单个主机的最大连接数
