@@ -1,8 +1,12 @@
 package com.example.Interceptor;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
+import com.example.handlerMapping.CustomRequestMappingHandlerMapping;
 
 @Configuration
 public class MyWebAppConfigurer 

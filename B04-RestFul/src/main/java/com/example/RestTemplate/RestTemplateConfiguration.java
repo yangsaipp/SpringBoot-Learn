@@ -1,20 +1,26 @@
 package com.example.RestTemplate;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
@@ -50,7 +56,7 @@ public class RestTemplateConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(RestTemplate.class)
 	public RestTemplate getRestTemplate() {
-		RestTemplate restTemplate = new RestTemplate(this.createFactory());
+		RestTemplate restTemplate = new MyRestTemplate(this.createFactory());
 		List<HttpMessageConverter<?>> converterList = restTemplate.getMessageConverters();
 
 		// 重新设置StringHttpMessageConverter字符集为UTF-8，解决中文乱码问题
@@ -68,7 +74,25 @@ public class RestTemplateConfiguration {
 
 		// 加入FastJson转换器
 //		converterList.add(new FastJsonHttpMessageConverter4());
+
+		List<ClientHttpRequestInterceptor> interceptors = restTemplate.getInterceptors();
+		if (CollectionUtils.isEmpty(interceptors)) {
+			interceptors = new ArrayList<>();
+		}
+		interceptors.add(new RestTemplateHeaderModifierInterceptor());
+		restTemplate.setInterceptors(interceptors);
 		return restTemplate;
+	}
+	
+	@Bean
+	public FilterRegistrationBean indexFilterRegistration() {
+		FilterRegistrationBean registration = new FilterRegistrationBean(new IndexFilter());
+		registration.addUrlPatterns("/*");
+		Map<String, String> initParameters = new HashMap<String, String>();
+		initParameters.put("url", "http://baidu.com");
+		registration.setInitParameters(initParameters);
+		registration.setOrder(Integer.MIN_VALUE + 1);
+		return registration;
 	}
 
 }

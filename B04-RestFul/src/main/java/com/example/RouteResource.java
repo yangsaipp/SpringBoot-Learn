@@ -13,15 +13,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.handlerMapping.ApiVersion;
 import com.example.model.DiscoveryType;
 import com.example.model.LoadBalanceStrategy;
 import com.example.model.RouteConfigVO;
@@ -32,7 +38,9 @@ import com.example.model.RouteConfigVO;
  * @author lihuan
  *
  */
-@RestController("/api")
+//@RestController("/api/{version}/")
+@RequestMapping("/{version}/")
+@Controller
 public class RouteResource {
 
 	private static final ThreadLocal<String> tl = new ThreadLocal<String>();
@@ -87,6 +95,8 @@ public class RouteResource {
 	 * @param perPage 每页数据量，默认每页100条数据 
 	 * @return 所有路由服务规则
 	 */
+	@ApiVersion(1)
+	@ResponseBody
 	@RequestMapping(value = "/routes", method = RequestMethod.GET)
 	public Object pageList(@RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "perPage", defaultValue = "100") int perPage){
 		System.out.println("set thead:"+ Thread.currentThread().getName());
@@ -106,10 +116,24 @@ public class RouteResource {
 	 * @param id id
 	 * @return RouteConfigVO
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/routes/{id}", method = RequestMethod.GET)
-	public Object get(@PathVariable String id){
+	public Object get(@PathVariable String id, HttpServletRequest request, HttpServletResponse response){
 		System.out.println("get thead:"+ Thread.currentThread().getName());
 		System.out.println("threadLocal: " + tl.get());
+		System.out.println(request.getHeader("Foo"));
+		if(request.getCookies() == null) {
+			return map.get(id); 
+		}
+		for(Cookie c : request.getCookies()) {
+			System.out.println(c.getName() + "=" + c.getValue());
+		}
+//		response.addCookie(new Cookie("xx","ss"));
+		response.addCookie(new Cookie("ss","ss2"));
+		Cookie c = new Cookie("ss2","ss2");
+		c.setPath("/restTemplate");
+//		c.setMaxAge(111111);
+		response.addCookie(c);
 		return map.get(id);
 	}
 	
@@ -118,6 +142,7 @@ public class RouteResource {
 	 * @param routeConfigVO routeConfigVO
 	 * @return routeConfigVO
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/routes", method = RequestMethod.POST)
 	public Object add(@RequestBody RouteConfigVO routeConfigVO){
 		routeConfigVO.setId(String.valueOf((new Random().nextInt())));
@@ -152,3 +177,4 @@ public class RouteResource {
 		return vo;
 	}
 }
+

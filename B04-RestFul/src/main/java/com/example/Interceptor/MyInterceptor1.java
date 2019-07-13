@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @myblog  http://blog.csdn.net/catoop/
  * @create    2016年1月7日
  */
+
 public class MyInterceptor1 implements HandlerInterceptor {
 
     @Override

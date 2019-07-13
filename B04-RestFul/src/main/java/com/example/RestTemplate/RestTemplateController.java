@@ -3,6 +3,9 @@ package com.example.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -36,10 +39,11 @@ public class RestTemplateController {
 		return routeMap;
 	}
 	
+	
 	@RequestMapping(value="/restTemplate/get")
 	@ResponseBody
-	public Object get() {
-		RouteConfigVO routeConfigVO = restTemplate.getForObject("http://localhost:8080/routes/{id}", RouteConfigVO.class, 1);
+	public Object get(HttpServletRequest request, HttpServletResponse response) {
+		RouteConfigVO routeConfigVO = restTemplate.getForObject("http://localhost:8080/v1/routes/{id}", RouteConfigVO.class, 1);
 		return routeConfigVO;
 	}
 	
@@ -53,7 +57,7 @@ public class RestTemplateController {
 	}
 	
 	@RequestMapping(value="/restTemplate/post")
-	public Object post() {
+	public Object post(HttpServletRequest request, HttpServletResponse response) {
 		// 构建header
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json;charset=UTF-8");
@@ -78,8 +82,8 @@ public class RestTemplateController {
 		try {
 			rep = restTemplate
 					.postForEntity(
-							"http://localhost:8080/routes/",
-							requestEntity, RouteConfigVO.class);
+							"http://localhost:8080/v1/routes/",
+							vo, RouteConfigVO.class);
 		} catch (RestClientException e) {
 			e.printStackTrace();
 		}
