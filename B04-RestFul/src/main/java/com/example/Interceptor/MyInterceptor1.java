@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.util.StringUtils;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,9 @@ public class MyInterceptor1 implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+    	HandlerMethod method = (HandlerMethod)handler;
+    	System.out.println(method.getMethod());
+    	System.out.println(method.getBeanType());
     	String token = (String) request.getAttribute("x-auth-token");
     	if(!StringUtils.isEmpty(token) && request.getSession().getAttribute(token) != null) {
     		return true;
