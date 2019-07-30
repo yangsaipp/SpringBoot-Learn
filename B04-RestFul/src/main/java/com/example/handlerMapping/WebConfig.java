@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.servlet.handler.SimpleServletHandlerAdapter;
 
 import com.example.Interceptor.MyInterceptor1;
 
@@ -20,6 +20,13 @@ public class WebConfig extends WebMvcConfigurationSupport{
 //        return handlerMapping;
 //    }
 
+	@Bean
+    public SimpleServletHandlerAdapter SimpleServletHandlerAdapter() {
+        return new SimpleServletHandlerAdapter();
+    }
+
+	
+	
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/api", "/v1/*");

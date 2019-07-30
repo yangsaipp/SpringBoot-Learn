@@ -8,6 +8,11 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 
 import com.example.handlerMapping.CustomRequestMappingHandlerMapping;
 
+/**
+ * 这种方法已经过时，且不会生效，更好的做法见com.example.handlerMapping.WebConfig
+ * @author yangsai
+ *
+ */
 @Configuration
 public class MyWebAppConfigurer 
         extends WebMvcConfigurerAdapter {
