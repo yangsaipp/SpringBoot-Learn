@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+/**
+ * 请求地址：http://127.0.0.1:8080/helloContro
+ * @author yangsai
+ *
+ */
 @Component("/helloContro")
 public class HelloController extends AbstractController {
 	private static final String CONTENT_TYPE = "application/xml; charset=UTF-8";

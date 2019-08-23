@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="org.springframework.web.servlet.HandlerMapping" project="data-analyzer" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="561" y="43"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="2" language="java" name="org.springframework.web.servlet.handler.AbstractHandlerMapping" 
+    project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="579" y="189"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" 
+    name="org.springframework.boot.actuate.autoconfigure.EndpointWebMvcChildContextConfiguration.CompositeHandlerMapping" 
+    project="B03-View-JSP" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-actuator/1.5.1.RELEASE/bf228e8d8b732d7a0a107cd2c68d786cc4fbb4a1/spring-boot-actuator-1.5.1.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="947" y="163"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="org.springframework.web.servlet.handler.MatchableHandlerMapping" 
+    project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="142" y="215"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="org.springframework.web.servlet.handler.AbstractUrlHandlerMapping" 
+    project="data-analyzer" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="456" y="285"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" 
+    project="data-analyzer" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="428" y="417"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.springframework.web.context.support.WebApplicationObjectSupport" 
+    project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.6.RELEASE/8b8bf8fc6ed4acd5ae0baa6179f1cccc52aaa9aa/spring-web-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="297" y="96"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping" project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-core/1.2.5.RELEASE/c49b35e9e2436e6faf23a56689ab682dbac7521d/spring-cloud-netflix-core-1.2.5.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="623" y="434"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping" 
+    project="data-analyzer" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="200" y="409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
+    project="data-analyzer" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="199" y="547"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping" 
+    project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="897" y="385"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.springframework.web.servlet.handler.AbstractHandlerMethodMapping" 
+    project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="790" y="300"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" 
+    name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" project="B04-RestFul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.3.6.RELEASE/ea55690d6d61ad70e2569db1e1add1603e427862/spring-webmvc-4.3.6.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="917" y="510"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="14">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="15">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="16" name="mappings">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <generalization id="20">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <realization id="26">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="28">    
+    <bendpoint x="143" y="35"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <realization id="29">    
+    <bendpoint x="137" y="484"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="30">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

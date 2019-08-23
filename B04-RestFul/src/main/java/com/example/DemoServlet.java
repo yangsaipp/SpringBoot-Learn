@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * 请求地址：http://127.0.0.1:8080/demo.do
+ * @author yangsai
+ *
+ */
 @Component("/demo.do")
 public class DemoServlet extends HttpServlet{
 
