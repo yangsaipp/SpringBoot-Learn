@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="org.springframework.cloud.netflix.zuul.filters.route.RibbonCommand" 
+    project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-core/1.2.5.RELEASE/c49b35e9e2436e6faf23a56689ab682dbac7521d/spring-cloud-netflix-core-1.2.5.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="63" width="219" x="170" y="297"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" language="java" name="com.netflix.hystrix.HystrixExecutable" project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-core/1.5.6/251a5f5a0ed860432c6f26fc37fc67783b2a898b/hystrix-core-1.5.6.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="117" width="152" x="300" y="140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="3" language="java" name="com.netflix.hystrix.HystrixInvokable" project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/com.netflix.hystrix/hystrix-core/1.5.6/251a5f5a0ed860432c6f26fc37fc67783b2a898b/hystrix-core-1.5.6.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="63" width="140" x="300" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="4" language="java" name="org.springframework.cloud.netflix.zuul.filters.route.RibbonCommandFactory" 
+    project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-core/1.2.5.RELEASE/c49b35e9e2436e6faf23a56689ab682dbac7521d/spring-cloud-netflix-core-1.2.5.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="81" width="219" x="41" y="140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="org.springframework.cloud.netflix.zuul.filters.Route" project="C01-Zuul" 
+    file="E:/gradleRepository/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-netflix-core/1.2.5.RELEASE/c49b35e9e2436e6faf23a56689ab682dbac7521d/spring-cloud-netflix-core-1.2.5.RELEASE.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="53" width="195" x="53" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="6">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="7">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="8">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
