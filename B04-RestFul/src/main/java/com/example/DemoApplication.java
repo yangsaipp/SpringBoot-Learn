@@ -1,7 +1,11 @@
 package com.example;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -32,7 +36,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 //            System.out.println(bean);
 //        }
 		System.out.println(Thread.currentThread().getName() + " ： hello");
-		Thread.sleep(3000);
+		Thread.sleep(10000);
         return "Hello World!";
     }
 
@@ -52,7 +56,35 @@ public class DemoApplication extends SpringBootServletInitializer {
         return application.sources(DemoApplication.class);
     }
 	
-       
+    @RequestMapping("/getData1")
+	@ResponseBody
+	Object getData1() throws Throwable {
+    	List<Map<String, String>> objList = new ArrayList<>();
+		Map<String, String> data = new HashMap<String, String>();
+    	data.put("text", "年");
+    	data.put("value", "year");
+    	objList.add(data);
+    	
+    	Map<String, String> data2 = new HashMap<String, String>();
+    	data2.put("text", "月");
+    	data2.put("value", "month");
+    	objList.add(data2);
+		return objList;
+	}
+    
+    @RequestMapping("/getData2")
+	@ResponseBody
+	Object getData2(HttpServletRequest request) throws Throwable {
+    	String type = request.getParameter("type");
+    	Map<String, String> data = new HashMap<String, String>();
+    	if("year".equals(type)) {
+    		data.put("date", "2020");
+    	} else if("month".equals(type)) {
+    		data.put("date", "2020-10");
+    	}
+		return data;
+	}
+     
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
