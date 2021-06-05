@@ -10,6 +10,11 @@
 
 spring-boot-starter-actuator提供了在运行时管理logger的endpoint。
 
+**3. 如何在日志中增加traceId方便分析系统错误日志，特别是在分布式系统中**
+https://blog.csdn.net/weixin_43723635/article/details/107201479
+第一步：修改 pattern,在中间添加 %X{TRACE_ID},表示输出日志时 会从 MDC(ThreadLocal)中获取当前线程的TRACE_ID属性
+第二步：编写过滤器，在用户访问时拦截用户请求,向MDC中存入 TRACE_ID
+
 ```
 // 查看所有的logger配置
 curl -i http://127.0.0.1:8080/loggers
